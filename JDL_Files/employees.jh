@@ -1,0 +1,67 @@
+
+/**
+ * Location entity.
+ */
+entity Location {
+	streetAddress String,
+	postalCode String,
+	city String required,
+	stateProvince String,
+    country Country required,
+}
+
+/**
+ * The Employee entity.
+ */
+entity Employee {
+	firstName String required minlength(2),
+	lastName String required minlength(2),
+	email String required,
+	dayRate Long required,
+    shortName String,
+    shore String required,
+    grade String required,
+    projectAvailability Double,
+    internProjectAvailability Double,
+    formDate ZonedDateTime,
+    toDate ZonedDateTime,
+    capacityPA Double,
+    capacityIPA Double,
+    team Team,
+}
+
+entity Project {
+	name String required,
+    start LocalDate, 
+    end LocalDate,
+}
+
+enum Country {
+    GERMANY, INDIA, POLAND
+}
+
+enum Team {
+	OSC, NSC, MUM
+}
+relationship OneToMany {
+	Project{employee} to Employee
+}
+relationship OneToOne {
+ 	Project{manager} to Employee
+}
+
+relationship OneToOne {
+	Employee{location} to Location
+}
+
+
+// Set pagination options
+paginate all with infinite-scroll
+
+//microservice * with employeeService
+
+//service all with serviceClass
+// Set service options to all except few
+//service all with serviceImpl except Employee, Job
+// Set an angular suffix
+//angularSuffix * with mySuffix

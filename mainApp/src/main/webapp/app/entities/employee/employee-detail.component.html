@@ -1,0 +1,89 @@
+
+<div *ngIf="employee">
+    <h2><span jhiTranslate="capaApp.employee.detail.title">Employee</span> {{employee.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="capaApp.employee.firstName">First Name</span></dt>
+        <dd>
+            <span>{{employee.firstName}}</span>
+        </dd>
+        <dt><span jhiTranslate="capaApp.employee.lastName">Last Name</span></dt>
+        <dd>
+            <span>{{employee.lastName}}</span>
+        </dd>
+        <dt><span jhiTranslate="capaApp.employee.email">Email</span></dt>
+        <dd>
+            <span>{{employee.email}}</span>
+        </dd>
+        <dt><span jhiTranslate="capaApp.employee.dayRate">Day Rate</span></dt>
+        <dd>
+            <span>{{employee.dayRate}}</span>
+        </dd>
+        <dt><span jhiTranslate="capaApp.employee.shortName">Short Name</span></dt>
+        <dd>
+            <span>{{employee.shortName}}</span>
+        </dd>
+        <dt><span jhiTranslate="capaApp.employee.shore">Shore</span></dt>
+        <dd>
+            <span>{{employee.shore}}</span>
+        </dd>
+        <dt><span jhiTranslate="capaApp.employee.grade">Grade</span></dt>
+        <dd>
+            <span>{{employee.grade}}</span>
+        </dd>
+        <dt><span jhiTranslate="capaApp.employee.projectAvailability">Project Availability</span></dt>
+        <dd>
+            <span>{{employee.projectAvailability}}</span>
+        </dd>
+        <dt><span jhiTranslate="capaApp.employee.internProjectAvailability">Intern Project Availability</span></dt>
+        <dd>
+            <span>{{employee.internProjectAvailability}}</span>
+        </dd>
+        <dt><span jhiTranslate="capaApp.employee.formDate">Form Date</span></dt>
+        <dd>
+            <span>{{employee.formDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="capaApp.employee.toDate">To Date</span></dt>
+        <dd>
+            <span>{{employee.toDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="capaApp.employee.capacityPA">Capacity PA</span></dt>
+        <dd>
+            <span>{{employee.capacityPA}}</span>
+        </dd>
+        <dt><span jhiTranslate="capaApp.employee.capacityIPA">Capacity IPA</span></dt>
+        <dd>
+            <span>{{employee.capacityIPA}}</span>
+        </dd>
+        <dt><span jhiTranslate="capaApp.employee.team">Team</span></dt>
+        <dd>
+            <span jhiTranslate="{{'capaApp.Team.' + employee.team}}">{{employee.team}}</span>
+        </dd>
+        <dt><span jhiTranslate="capaApp.employee.location">Location</span></dt>
+        <dd>
+            <div *ngIf="employee.location">
+                <a [routerLink]="['/location', employee.location?.id]">{{employee.location?.id}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="capaApp.employee.project">Project</span></dt>
+        <dd>
+            <div *ngIf="employee.project">
+                <a [routerLink]="['/project', employee.project?.id]">{{employee.project?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'employee/'+ employee.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>
