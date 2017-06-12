@@ -1,0 +1,109 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "project",
+            "otherEntityName": "project",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "firstName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength"
+            ],
+            "fieldValidateRulesMinlength": 2
+        },
+        {
+            "fieldName": "lastName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength"
+            ],
+            "fieldValidateRulesMinlength": 2
+        },
+        {
+            "fieldName": "email",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "dayRate",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "shortName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "shore",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "grade",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "projectAvailability",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "internProjectAvailability",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "formDate",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "toDate",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "capacityPA",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "capacityIPA",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "country",
+            "fieldType": "Country",
+            "fieldValues": "GERMANY,INDIA,POLAND",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "team",
+            "fieldType": "Team",
+            "fieldValues": "OSC,NSC,MUM",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20170608110048",
+    "javadoc": "The Employee entity.",
+    "entityTableName": "employee",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "no"
+}

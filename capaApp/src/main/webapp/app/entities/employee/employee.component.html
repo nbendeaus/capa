@@ -1,0 +1,103 @@
+<div>
+    <h2>
+        <span jhiTranslate="capaApp.employee.home.title">Employees</span>
+        <button class="btn btn-primary float-right create-employee" [routerLink]="['/', { outlets: { popup: ['employee-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="capaApp.employee.home.createLabel">
+            Create new Employee
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12 no-padding-right">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'capaApp.employee.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="employees">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="firstName"><span jhiTranslate="capaApp.employee.firstName">First Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="lastName"><span jhiTranslate="capaApp.employee.lastName">Last Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="email"><span jhiTranslate="capaApp.employee.email">Email</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dayRate"><span jhiTranslate="capaApp.employee.dayRate">Day Rate</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="shortName"><span jhiTranslate="capaApp.employee.shortName">Short Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="shore"><span jhiTranslate="capaApp.employee.shore">Shore</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="grade"><span jhiTranslate="capaApp.employee.grade">Grade</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="projectAvailability"><span jhiTranslate="capaApp.employee.projectAvailability">Project Availability</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="internProjectAvailability"><span jhiTranslate="capaApp.employee.internProjectAvailability">Intern Project Availability</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="formDate"><span jhiTranslate="capaApp.employee.formDate">Form Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="toDate"><span jhiTranslate="capaApp.employee.toDate">To Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="capacityPA"><span jhiTranslate="capaApp.employee.capacityPA">Capacity PA</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="capacityIPA"><span jhiTranslate="capaApp.employee.capacityIPA">Capacity IPA</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="country"><span jhiTranslate="capaApp.employee.country">Country</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="team"><span jhiTranslate="capaApp.employee.team">Team</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="project.id"><span jhiTranslate="capaApp.employee.project">Project</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tr *ngFor="let employee of employees ;trackBy: trackId">
+                <td><a [routerLink]="['../employee', employee.id ]">{{employee.id}}</a></td>
+                <td>{{employee.firstName}}</td>
+                <td>{{employee.lastName}}</td>
+                <td>{{employee.email}}</td>
+                <td>{{employee.dayRate}}</td>
+                <td>{{employee.shortName}}</td>
+                <td>{{employee.shore}}</td>
+                <td>{{employee.grade}}</td>
+                <td>{{employee.projectAvailability}}</td>
+                <td>{{employee.internProjectAvailability}}</td>
+                <td>{{employee.formDate | date:'medium'}}</td>
+                <td>{{employee.toDate | date:'medium'}}</td>
+                <td>{{employee.capacityPA}}</td>
+                <td>{{employee.capacityIPA}}</td>
+                <td jhiTranslate="{{'capaApp.Country.' + employee.country}}">{{employee.country}}</td>
+                <td jhiTranslate="{{'capaApp.Team.' + employee.team}}">{{employee.team}}</td>
+                <td>
+                    <div *ngIf="employee.project">
+                        <a [routerLink]="['../project', employee.project?.id ]" >{{employee.project?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../employee', employee.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'employee/'+ employee.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'employee/'+ employee.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "de.capgemini.capa",
+      "nativeLanguage": "de"
+    },
+    "jhipsterVersion": "4.4.1",
+    "baseName": "capaApp",
+    "packageName": "de.capgemini.capa",
+    "packageFolder": "de/capgemini/capa",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "hibernateCache": "hazelcast",
+    "clusteredHttpSession": false,
+    "websocket": "spring-websocket",
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "mysql",
+    "searchEngine": "elasticsearch",
+    "messageBroker": false,
+    "serviceDiscoveryType": "eureka",
+    "buildTool": "maven",
+    "enableSocialSignIn": false,
+    "jwtSecretKey": "fe603fd2b5f93f2c36f47a756cfa33e1bb0a8fb5",
+    "clientFramework": "angular2",
+    "useSass": true,
+    "clientPackageManager": "yarn",
+    "applicationType": "gateway",
+    "testFrameworks": [
+      "gatling",
+      "cucumber",
+      "protractor"
+    ],
+    "jhiPrefix": "jhi",
+    "otherModules": [],
+    "enableTranslation": true,
+    "nativeLanguage": "de",
+    "languages": [
+      "de",
+      "en"
+    ]
+  }
+}

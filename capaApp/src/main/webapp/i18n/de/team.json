@@ -1,0 +1,10 @@
+{
+    "capaApp": {
+        "Team" : {
+            "null": "",
+            "OSC": "OSC",
+            "NSC": "NSC",
+            "MUM": "MUM"
+        }
+    }
+}

@@ -1,0 +1,10 @@
+{
+    "capaApp": {
+        "Country" : {
+            "null": "",
+            "GERMANY": "GERMANY",
+            "INDIA": "INDIA",
+            "POLAND": "POLAND"
+        }
+    }
+}
