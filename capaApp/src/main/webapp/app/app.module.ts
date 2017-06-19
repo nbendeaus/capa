@@ -11,6 +11,8 @@ import { CapaAppAdminModule } from './admin/admin.module';
 import { CapaAppAccountModule } from './account/account.module';
 import { CapaAppEntityModule } from './entities/entity.module';
 
+import {LoginComponent} from './login/login.component';
+
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { NAV_DROPDOWN_DIRECTIVES } from './shared/nav-dropdown.directive';
@@ -34,13 +36,15 @@ import {
     ErrorComponent,
     P500Component,
     P404Component,
+    FullLayoutComponent,
+    SimpleLayoutComponent,
 } from './layouts';
 
 @NgModule({
     imports: [
         BrowserModule,
         LayoutRoutingModule,
-        Ng2Webstorage.forRoot({ prefix: 'jhi', separator: '-'}),
+        Ng2Webstorage.forRoot({ prefix: '', separator: '-'}),
         CapaAppSharedModule,
         CapaAppHomeModule,
         CapaAppAdminModule,
@@ -60,7 +64,8 @@ import {
         AsideToggleDirective,
         PageRibbonComponent,
         ActiveMenuDirective,
-        FooterComponent
+        FooterComponent,
+        LoginComponent,
     ],
     providers: [
         ProfileService,
