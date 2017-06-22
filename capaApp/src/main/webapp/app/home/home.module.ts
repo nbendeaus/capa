@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { CapaAppSharedModule } from '../shared';
 
 import { HOME_ROUTE, HomeComponent } from './';
+import {DashboardComponent} from "../dashboard/dashboard.component";
 
 @NgModule({
     imports: [

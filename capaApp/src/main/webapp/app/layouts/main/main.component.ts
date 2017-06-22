@@ -5,8 +5,9 @@ import { JhiLanguageService } from 'ng-jhipster';
 import { JhiLanguageHelper, StateStorageService } from '../../shared';
 
 @Component({
-    selector: 'jhi-main',
-    templateUrl: './main.component.html'
+    selector: 'body',
+    //templateUrl: './main.component.html'
+    template: '<router-outlet></router-outlet>'
 })
 export class JhiMainComponent implements OnInit {
 

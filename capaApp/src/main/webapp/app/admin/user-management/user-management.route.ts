@@ -35,27 +35,6 @@ export class UserResolvePagingParams implements Resolve<any> {
         };
     }
 }
-
-export const userMgmtRoute: Routes = [
-    {
-        path: 'user-management',
-        component: UserMgmtComponent,
-        resolve: {
-            'pagingParams': UserResolvePagingParams
-        },
-        data: {
-            pageTitle: 'userManagement.home.title'
-        }
-    },
-    {
-        path: 'user-management/:login',
-        component: UserMgmtDetailComponent,
-        data: {
-            pageTitle: 'userManagement.home.title'
-        }
-    }
-];
-
 export const userDialogRoute: Routes = [
     {
         path: 'user-management-new',
@@ -73,3 +52,27 @@ export const userDialogRoute: Routes = [
         outlet: 'popup'
     }
 ];
+
+export const userMgmtRoute: Routes = [
+    {
+        path: 'user-management',
+        component: UserMgmtComponent,
+        resolve: {
+            'pagingParams': UserResolvePagingParams
+        },
+        data: {
+            pageTitle: 'userManagement.home.title',
+            title: 'User Management',
+        },
+    },
+    {
+        path: 'user-management/:login',
+        component: UserMgmtDetailComponent,
+        data: {
+            pageTitle: 'userManagement.home.title'
+        }
+    },
+        ...userDialogRoute,
+];
+
+

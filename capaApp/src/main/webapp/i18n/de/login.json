@@ -1,10 +1,11 @@
 {
     "login": {
         "title": "Anmeldung",
+        "subtitle" : "Anmeldung für deinem Account",
         "form": {
             "password": "Passwort",
             "password.placeholder": "Ihr Passwort",
-            "rememberme": "Automatische Anmeldung",
+            "rememberme": "Angemeldet beleiben",
             "button": "Anmelden"
         },
         "messages": {
@@ -13,7 +14,7 @@
             }
         },
         "password" : {
-            "forgot": "Sie haben Ihr Passwort vergessen?"
+            "forgot": "Passwort vergessen?"
         }
     }
 }

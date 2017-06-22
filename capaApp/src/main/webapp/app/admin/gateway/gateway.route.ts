@@ -7,6 +7,7 @@ export const gatewayRoute: Route = {
     path: 'gateway',
     component: JhiGatewayComponent,
     data: {
-        pageTitle: 'gateway.title'
+        pageTitle: 'gateway.title',
+        title: 'Gateway',
     }
 };

@@ -1,6 +1,7 @@
 {
     "login": {
         "title": "Sign in",
+        "subtitle" : "Sign In to your account",
         "form": {
             "password": "Password",
             "password.placeholder": "Your password",
@@ -13,7 +14,7 @@
             }
         },
         "password" : {
-            "forgot": "Did you forget your password?"
+            "forgot": "Forgot password?"
         }
     }
 }

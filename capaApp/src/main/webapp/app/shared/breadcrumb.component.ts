@@ -29,10 +29,12 @@ export class BreadcrumbsComponent implements OnInit {
           if (route.outlet === 'primary') {
             const routeSnapshot = route.snapshot;
             url += '/' + routeSnapshot.url.map(segment => segment.path).join('/');
+
             this.breadcrumbs.push({
               label: route.snapshot.data,
               url:   url
             });
+            console.log("Breadcrumb lable: " + this.breadcrumbs);
             currentRoute = route;
           }
         });

@@ -4,6 +4,7 @@ import './polyfills';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { Ng2Webstorage } from 'ng2-webstorage';
+import { Ng2BootstrapModule} from 'ngx-bootstrap';
 
 import { CapaAppSharedModule, UserRouteAccessService } from './shared';
 import { CapaAppHomeModule } from './home/home.module';
@@ -11,12 +12,7 @@ import { CapaAppAdminModule } from './admin/admin.module';
 import { CapaAppAccountModule } from './account/account.module';
 import { CapaAppEntityModule } from './entities/entity.module';
 
-import {LoginComponent} from './login/login.component';
-
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-import { TabsModule } from 'ngx-bootstrap/tabs';
 import { NAV_DROPDOWN_DIRECTIVES } from './shared/nav-dropdown.directive';
-
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { SIDEBAR_TOGGLE_DIRECTIVES } from './shared/sidebar.directive';
 import { AsideToggleDirective } from './shared/aside.directive';
@@ -40,17 +36,25 @@ import {
     SimpleLayoutComponent,
 } from './layouts';
 
+import {DashboardModule} from "./dashboard/dashboard.module";
+
+
 @NgModule({
     imports: [
         BrowserModule,
         LayoutRoutingModule,
         Ng2Webstorage.forRoot({ prefix: '', separator: '-'}),
+
         CapaAppSharedModule,
         CapaAppHomeModule,
         CapaAppAdminModule,
         CapaAppAccountModule,
         CapaAppEntityModule,
+
+        DashboardModule,
+
         ChartsModule,
+        Ng2BootstrapModule.forRoot(),
     ],
     declarations: [
         JhiMainComponent,
@@ -65,13 +69,18 @@ import {
         PageRibbonComponent,
         ActiveMenuDirective,
         FooterComponent,
-        LoginComponent,
+        FullLayoutComponent,
+        SimpleLayoutComponent,
+    ],
+    entryComponents:[
+
     ],
     providers: [
         ProfileService,
         customHttpProvider(),
         PaginationConfig,
-        UserRouteAccessService
+        UserRouteAccessService,
+
     ],
     bootstrap: [ JhiMainComponent ]
 })

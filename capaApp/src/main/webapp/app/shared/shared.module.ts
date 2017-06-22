@@ -21,11 +21,11 @@ import {
 @NgModule({
     imports: [
         CapaAppSharedLibsModule,
-        CapaAppSharedCommonModule
+        CapaAppSharedCommonModule,
     ],
     declarations: [
         JhiLoginModalComponent,
-        HasAnyAuthorityDirective
+        HasAnyAuthorityDirective,
     ],
     providers: [
         CookieService,
@@ -38,7 +38,8 @@ import {
         JhiTrackerService,
         AuthServerProvider,
         UserService,
-        DatePipe
+        DatePipe,
+
     ],
     entryComponents: [JhiLoginModalComponent],
     exports: [
