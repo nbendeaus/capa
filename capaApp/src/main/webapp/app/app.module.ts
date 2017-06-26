@@ -43,7 +43,7 @@ import {DashboardModule} from "./dashboard/dashboard.module";
     imports: [
         BrowserModule,
         LayoutRoutingModule,
-        Ng2Webstorage.forRoot({ prefix: '', separator: '-'}),
+        Ng2Webstorage.forRoot({ prefix: 'jhi', separator: '-'}),
 
         CapaAppSharedModule,
         CapaAppHomeModule,

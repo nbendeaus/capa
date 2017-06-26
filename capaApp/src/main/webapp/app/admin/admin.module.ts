@@ -33,6 +33,7 @@ import {
     UserResolve,
     UserModalService
 } from './';
+import {UserMgmtEditComponent} from "./user-management/user-management-edit.component";
 
 @NgModule({
     imports: [
@@ -46,6 +47,7 @@ import {
         UserDialogComponent,
         UserDeleteDialogComponent,
         UserMgmtDetailComponent,
+        UserMgmtEditComponent,
         UserMgmtDialogComponent,
         UserMgmtDeleteDialogComponent,
         LogsComponent,

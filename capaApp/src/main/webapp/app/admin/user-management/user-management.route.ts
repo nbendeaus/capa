@@ -9,6 +9,7 @@ import { UserDialogComponent } from './user-management-dialog.component';
 import { UserDeleteDialogComponent } from './user-management-delete-dialog.component';
 
 import { Principal } from '../../shared';
+import {UserMgmtEditComponent} from "./user-management-edit.component";
 
 @Injectable()
 export class UserResolve implements CanActivate {
@@ -72,7 +73,26 @@ export const userMgmtRoute: Routes = [
             pageTitle: 'userManagement.home.title'
         }
     },
-        ...userDialogRoute,
+    {
+        path: 'user-management-new',
+        component: UserMgmtEditComponent,
+        data: {
+            pageTitle: 'userManagement.home.title'
+        }
+    },
+    {
+        path: 'user-management/edit/:login',
+        component: UserMgmtEditComponent,
+        data: {
+            pageTitle: 'userManagement.home.title'
+        }
+
+    },
+    {
+        path: 'user-management/delete/:login',
+        component: UserDeleteDialogComponent,
+
+    },
 ];
 
 

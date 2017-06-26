@@ -9,7 +9,6 @@ import { EventManager, AlertService } from 'ng-jhipster';
 import { Employee } from './employee.model';
 import { EmployeePopupService } from './employee-popup.service';
 import { EmployeeService } from './employee.service';
-import { Project, ProjectService } from '../project';
 
 @Component({
     selector: 'jhi-employee-dialog',
@@ -21,13 +20,10 @@ export class EmployeeDialogComponent implements OnInit {
     authorities: any[];
     isSaving: boolean;
 
-    projects: Project[];
-
     constructor(
         public activeModal: NgbActiveModal,
         private alertService: AlertService,
         private employeeService: EmployeeService,
-        private projectService: ProjectService,
         private eventManager: EventManager
     ) {
     }
@@ -35,8 +31,6 @@ export class EmployeeDialogComponent implements OnInit {
     ngOnInit() {
         this.isSaving = false;
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
-        this.projectService.query().subscribe(
-            (res: Response) => { this.projects = res.json(); }, (res: Response) => this.onError(res.json()));
     }
     clear() {
         this.activeModal.dismiss('cancel');
@@ -76,10 +70,6 @@ export class EmployeeDialogComponent implements OnInit {
 
     private onError(error) {
         this.alertService.error(error.message, null, null);
-    }
-
-    trackProjectById(index: number, item: Project) {
-        return item.id;
     }
 }
 

@@ -7,9 +7,6 @@
                 "createOrEditLabel": "Employee erstellen oder bearbeiten",
                 "search": "Suche nach Employee"
             },
-            "created": "Employee erstellt mit ID {{ param }}",
-            "updated": "Employee aktualisiert mit ID {{ param }}",
-            "deleted": "Employee gelöscht mit ID {{ param }}",
             "delete": {
                 "question": "Soll Employee {{ id }} wirklich dauerhaft gelöscht werden?"
             },
@@ -18,20 +15,14 @@
             },
             "firstName": "First Name",
             "lastName": "Last Name",
-            "email": "Email",
-            "dayRate": "Day Rate",
-            "shortName": "Short Name",
-            "shore": "Shore",
-            "grade": "Grade",
-            "projectAvailability": "Project Availability",
-            "internProjectAvailability": "Intern Project Availability",
-            "formDate": "Form Date",
-            "toDate": "To Date",
-            "capacityPA": "Capacity PA",
-            "capacityIPA": "Capacity IPA",
-            "country": "Country",
-            "team": "Team",
-            "project": "Project"
+            "email": "Email"
+        }
+    },
+    "capaApp": {
+        "employee" : {
+            "created": "Employee erstellt mit ID {{ param }}",
+            "updated": "Employee aktualisiert mit ID {{ param }}",
+            "deleted": "Employee gelöscht mit ID {{ param }}"
         }
     }
 }

@@ -3,15 +3,14 @@ import { Http, Response, URLSearchParams, BaseRequestOptions } from '@angular/ht
 import { Observable } from 'rxjs/Rx';
 
 import { Employee } from './employee.model';
-import { DateUtils } from 'ng-jhipster';
 
 @Injectable()
 export class EmployeeService {
 
-    private resourceUrl = 'api/employees';
-    private resourceSearchUrl = 'api/_search/employees';
+    private resourceUrl = 'capaapp/api/employees';
+    private resourceSearchUrl = 'capaapp/api/_search/employees';
 
-    constructor(private http: Http, private dateUtils: DateUtils) { }
+    constructor(private http: Http) { }
 
     create(employee: Employee): Observable<Employee> {
         const copy = this.convert(employee);
@@ -29,19 +28,13 @@ export class EmployeeService {
 
     find(id: number): Observable<Employee> {
         return this.http.get(`${this.resourceUrl}/${id}`).map((res: Response) => {
-            const jsonResponse = res.json();
-            jsonResponse.formDate = this.dateUtils
-                .convertDateTimeFromServer(jsonResponse.formDate);
-            jsonResponse.toDate = this.dateUtils
-                .convertDateTimeFromServer(jsonResponse.toDate);
-            return jsonResponse;
+            return res.json();
         });
     }
 
     query(req?: any): Observable<Response> {
         const options = this.createRequestOption(req);
         return this.http.get(this.resourceUrl, options)
-            .map((res: Response) => this.convertResponse(res))
         ;
     }
 
@@ -52,22 +45,8 @@ export class EmployeeService {
     search(req?: any): Observable<Response> {
         const options = this.createRequestOption(req);
         return this.http.get(this.resourceSearchUrl, options)
-            .map((res: any) => this.convertResponse(res))
         ;
     }
-
-    private convertResponse(res: Response): Response {
-        const jsonResponse = res.json();
-        for (let i = 0; i < jsonResponse.length; i++) {
-            jsonResponse[i].formDate = this.dateUtils
-                .convertDateTimeFromServer(jsonResponse[i].formDate);
-            jsonResponse[i].toDate = this.dateUtils
-                .convertDateTimeFromServer(jsonResponse[i].toDate);
-        }
-        res.json().data = jsonResponse;
-        return res;
-    }
-
     private createRequestOption(req?: any): BaseRequestOptions {
         const options: BaseRequestOptions = new BaseRequestOptions();
         if (req) {
@@ -86,10 +65,6 @@ export class EmployeeService {
 
     private convert(employee: Employee): Employee {
         const copy: Employee = Object.assign({}, employee);
-
-        copy.formDate = this.dateUtils.toDate(employee.formDate);
-
-        copy.toDate = this.dateUtils.toDate(employee.toDate);
         return copy;
     }
 }

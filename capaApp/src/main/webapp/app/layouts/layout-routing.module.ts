@@ -9,13 +9,10 @@ import {FullLayoutComponent} from './layout/full-layout.component';
 import {DashboardComponent} from "../dashboard/dashboard.component";
 import {JhiLoginModalComponent} from "../shared/login/login.component";
 import {UserRouteAccessService} from "../shared/index";
-import {userMgmtRoute} from "../admin/user-management/user-management.route";
 import {adminState} from "../admin/admin.route";
 
 const LAYOUT_ROUTES = [
     navbarRoute,
-
-
 ];
 
 const ROUTES = [
@@ -53,15 +50,15 @@ const ROUTES = [
 
         ...errorRoute,
 
-    {
-        path: '**',
-        redirectTo: '404'
-    },
+    // {
+    //     path: '**',
+    //     redirectTo: '404'
+    // },
 ];
 
 @NgModule({
     imports: [
-        RouterModule.forRoot(ROUTES, { useHash: true }),
+        RouterModule.forRoot(ROUTES, { useHash: false }),
         //RouterModule.forChild(ROUTES)
     ],
     exports: [

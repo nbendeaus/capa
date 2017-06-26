@@ -16,60 +16,6 @@
         <dd>
             <span>{{employee.email}}</span>
         </dd>
-        <dt><span jhiTranslate="capaApp.employee.dayRate">Day Rate</span></dt>
-        <dd>
-            <span>{{employee.dayRate}}</span>
-        </dd>
-        <dt><span jhiTranslate="capaApp.employee.shortName">Short Name</span></dt>
-        <dd>
-            <span>{{employee.shortName}}</span>
-        </dd>
-        <dt><span jhiTranslate="capaApp.employee.shore">Shore</span></dt>
-        <dd>
-            <span>{{employee.shore}}</span>
-        </dd>
-        <dt><span jhiTranslate="capaApp.employee.grade">Grade</span></dt>
-        <dd>
-            <span>{{employee.grade}}</span>
-        </dd>
-        <dt><span jhiTranslate="capaApp.employee.projectAvailability">Project Availability</span></dt>
-        <dd>
-            <span>{{employee.projectAvailability}}</span>
-        </dd>
-        <dt><span jhiTranslate="capaApp.employee.internProjectAvailability">Intern Project Availability</span></dt>
-        <dd>
-            <span>{{employee.internProjectAvailability}}</span>
-        </dd>
-        <dt><span jhiTranslate="capaApp.employee.formDate">Form Date</span></dt>
-        <dd>
-            <span>{{employee.formDate | date:'medium'}}</span>
-        </dd>
-        <dt><span jhiTranslate="capaApp.employee.toDate">To Date</span></dt>
-        <dd>
-            <span>{{employee.toDate | date:'medium'}}</span>
-        </dd>
-        <dt><span jhiTranslate="capaApp.employee.capacityPA">Capacity PA</span></dt>
-        <dd>
-            <span>{{employee.capacityPA}}</span>
-        </dd>
-        <dt><span jhiTranslate="capaApp.employee.capacityIPA">Capacity IPA</span></dt>
-        <dd>
-            <span>{{employee.capacityIPA}}</span>
-        </dd>
-        <dt><span jhiTranslate="capaApp.employee.country">Country</span></dt>
-        <dd>
-            <span jhiTranslate="{{'capaApp.Country.' + employee.country}}">{{employee.country}}</span>
-        </dd>
-        <dt><span jhiTranslate="capaApp.employee.team">Team</span></dt>
-        <dd>
-            <span jhiTranslate="{{'capaApp.Team.' + employee.team}}">{{employee.team}}</span>
-        </dd>
-        <dt><span jhiTranslate="capaApp.employee.project">Project</span></dt>
-        <dd>
-            <div *ngIf="employee.project">
-                <a [routerLink]="['/project', employee.project?.id]">{{employee.project?.id}}</a>
-            </div>
-        </dd>
     </dl>
 
     <button type="submit"

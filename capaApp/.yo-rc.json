@@ -2,7 +2,8 @@
   "generator-jhipster": {
     "promptValues": {
       "packageName": "de.capgemini.capa",
-      "nativeLanguage": "de"
+      "nativeLanguage": "de",
+      "microservicePath": "../employeeService"
     },
     "jhipsterVersion": "4.4.1",
     "baseName": "capaApp",

@@ -34,6 +34,5 @@ export const adminState: Routes = [{
     },
     canActivate: [UserRouteAccessService],
     children: ADMIN_ROUTES
-},
-    ...userDialogRoute
+    },
 ];

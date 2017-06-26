@@ -1,0 +1,20 @@
+
+/**
+ * The Employee entity.
+ */
+entity Employee {
+	firstName String required minlength(2),
+	lastName String required minlength(2),
+	email String required,
+}
+
+// Set pagination options
+paginate all with infinite-scroll
+
+microservice * with capaApp
+
+//service all with serviceClass
+// Set service options to all except few
+//service all with serviceImpl except Employee, Job
+// Set an angular suffix
+//angularSuffix * with mySuffix

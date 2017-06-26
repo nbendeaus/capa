@@ -34,7 +34,6 @@ export class BreadcrumbsComponent implements OnInit {
               label: route.snapshot.data,
               url:   url
             });
-            console.log("Breadcrumb lable: " + this.breadcrumbs);
             currentRoute = route;
           }
         });

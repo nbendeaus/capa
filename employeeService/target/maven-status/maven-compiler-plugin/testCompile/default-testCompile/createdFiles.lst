@@ -1,0 +1,5 @@
+de\capgemini\capa\config\elasticsearch\IndexReinitializer.class
+de\capgemini\capa\web\rest\TestUtil$ZonedDateTimeMatcher.class
+de\capgemini\capa\cucumber\CucumberTest.class
+de\capgemini\capa\cucumber\stepdefs\StepDefs.class
+de\capgemini\capa\web\rest\TestUtil.class

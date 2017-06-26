@@ -22,6 +22,7 @@ export class FullLayoutComponent implements OnInit {
     swaggerEnabled: boolean;
     modalRef: NgbModalRef;
     version: string;
+    currentAccount: any;
 
     constructor(
         private loginService: LoginService,
@@ -54,6 +55,10 @@ export class FullLayoutComponent implements OnInit {
             this.inProduction = profileInfo.inProduction;
             this.swaggerEnabled = profileInfo.swaggerEnabled;
         });
+        this.principal.identity().then((account) => {
+            this.currentAccount = account;
+        });
+
     }
 
     changeLanguage(languageKey: string) {

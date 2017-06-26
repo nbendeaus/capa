@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 import { NgbActiveModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { EventManager } from 'ng-jhipster';
@@ -22,7 +22,8 @@ export class UserMgmtDialogComponent implements OnInit {
         public activeModal: NgbActiveModal,
         private languageHelper: JhiLanguageHelper,
         private userService: UserService,
-        private eventManager: EventManager
+        private eventManager: EventManager,
+        private router : Router,
     ) {}
 
     ngOnInit() {
@@ -37,6 +38,7 @@ export class UserMgmtDialogComponent implements OnInit {
     }
 
     clear() {
+        this.router.navigate(['/user-management']);
         this.activeModal.dismiss('cancel');
     }
 
