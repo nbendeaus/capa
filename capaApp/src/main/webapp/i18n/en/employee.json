@@ -1,5 +1,4 @@
 {
-    "capaApp": {
         "employee" : {
             "home": {
                 "title": "Employees",
@@ -15,14 +14,9 @@
             },
             "firstName": "First Name",
             "lastName": "Last Name",
-            "email": "Email"
-        }
-    },
-    "capaApp": {
-        "employee" : {
+            "email": "Email",
             "created": "A new Employee is created with identifier {{ param }}",
             "updated": "A Employee is updated with identifier {{ param }}",
             "deleted": "A Employee is deleted with identifier {{ param }}"
         }
-    }
 }

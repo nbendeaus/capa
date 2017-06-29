@@ -1,7 +1,7 @@
 <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
 
     <div class="modal-header">
-        <h4 class="modal-title" id="myEmployeeLabel" jhiTranslate="capaApp.employee.home.createOrEditLabel">Create or edit a Employee</h4>
+        <h4 class="modal-title" id="myEmployeeLabel" jhiTranslate="employee.home.createOrEditLabel">Create or edit a Employee</h4>
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                 (click)="clear()">&times;</button>
     </div>
@@ -13,7 +13,7 @@
                    [(ngModel)]="employee.id" readonly />
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="capaApp.employee.firstName" for="field_firstName">First Name</label>
+            <label class="form-control-label" jhiTranslate="employee.firstName" for="field_firstName">First Name</label>
             <input type="text" class="form-control" name="firstName" id="field_firstName"
                 [(ngModel)]="employee.firstName"
             required minlength="2" />

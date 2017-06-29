@@ -3,6 +3,7 @@ de\capgemini\capa\config\ElasticsearchConfiguration$CustomEntityMapper.class
 de\capgemini\capa\security\jwt\TokenProvider.class
 de\capgemini\capa\config\LoggingConfiguration$LogbackLoggerContextListener.class
 de\capgemini\capa\web\rest\errors\CustomParameterizedException.class
+de\capgemini\capa\web\rest\EmployeeResource.class
 de\capgemini\capa\config\CacheConfiguration.class
 de\capgemini\capa\config\ThymeleafConfiguration.class
 de\capgemini\capa\web\rest\errors\ErrorConstants.class
@@ -16,7 +17,9 @@ de\capgemini\capa\config\DateTimeFormatConfiguration.class
 de\capgemini\capa\domain\AbstractAuditingEntity.class
 de\capgemini\capa\web\rest\errors\ErrorVM.class
 de\capgemini\capa\security\AuthoritiesConstants.class
+de\capgemini\capa\domain\Employee.class
 de\capgemini\capa\web\rest\ProfileInfoResource$ProfileInfoVM.class
+de\capgemini\capa\repository\search\EmployeeSearchRepository.class
 de\capgemini\capa\config\LoggingConfiguration.class
 de\capgemini\capa\security\jwt\JWTConfigurer.class
 de\capgemini\capa\aop\logging\LoggingAspect.class
@@ -32,6 +35,7 @@ de\capgemini\capa\web\rest\ProfileInfoResource.class
 de\capgemini\capa\web\rest\util\PaginationUtil.class
 de\capgemini\capa\web\rest\vm\LoggerVM.class
 de\capgemini\capa\config\ApplicationProperties.class
+de\capgemini\capa\repository\EmployeeRepository.class
 de\capgemini\capa\config\AsyncConfiguration.class
 de\capgemini\capa\config\MetricsConfiguration.class
 de\capgemini\capa\config\Constants.class

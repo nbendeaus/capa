@@ -70,21 +70,24 @@ export const userMgmtRoute: Routes = [
         path: 'user-management/:login',
         component: UserMgmtDetailComponent,
         data: {
-            pageTitle: 'userManagement.home.title'
+            pageTitle: 'userManagement.home.title',
+            title: 'User Management - Details',
         }
     },
     {
         path: 'user-management-new',
         component: UserMgmtEditComponent,
         data: {
-            pageTitle: 'userManagement.home.title'
+            pageTitle: 'userManagement.home.title',
+            title: 'User Management - New',
         }
     },
     {
         path: 'user-management/edit/:login',
         component: UserMgmtEditComponent,
         data: {
-            pageTitle: 'userManagement.home.title'
+            pageTitle: 'userManagement.home.title',
+            title: 'User Management - Edit ',
         }
 
     },

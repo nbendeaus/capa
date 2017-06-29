@@ -1,33 +1,36 @@
+<div *ngIf="employee" style="margin-bottom: 20px">
+    <h2><span jhiTranslate="employee.detail.title">Employee: </span> <strong>{{employee.firstName}}</strong></h2>
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header"></div>
+                    <div class="card-block">
+                        <dl class="row-md jh-entity-details">
+                            <dt><span jhiTranslate="employee.firstName">First Name</span></dt>
+                            <dd>
+                                <span>{{employee.firstName}}</span>
+                            </dd>
+                            <dt><span jhiTranslate="employee.lastName">Last Name</span></dt>
+                            <dd>
+                                <span>{{employee.lastName}}</span>
+                            </dd>
+                            <dt><span jhiTranslate="employee.email">Email</span></dt>
+                            <dd>
+                                <span>{{employee.email}}</span>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-<div *ngIf="employee">
-    <h2><span jhiTranslate="capaApp.employee.detail.title">Employee</span> {{employee.id}}</h2>
-    <hr>
-    <jhi-alert-error></jhi-alert-error>
-    <dl class="row-md jh-entity-details">
-        <dt><span jhiTranslate="capaApp.employee.firstName">First Name</span></dt>
-        <dd>
-            <span>{{employee.firstName}}</span>
-        </dd>
-        <dt><span jhiTranslate="capaApp.employee.lastName">Last Name</span></dt>
-        <dd>
-            <span>{{employee.lastName}}</span>
-        </dd>
-        <dt><span jhiTranslate="capaApp.employee.email">Email</span></dt>
-        <dd>
-            <span>{{employee.email}}</span>
-        </dd>
-    </dl>
+    </div>
+
 
     <button type="submit"
             (click)="previousState()"
             class="btn btn-info">
         <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
-    </button>
-
-    <button type="button"
-            [routerLink]="['/', { outlets: { popup: 'employee/'+ employee.id + '/edit'} }]"
-            replaceUrl="true"
-            class="btn btn-primary">
-        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
     </button>
 </div>

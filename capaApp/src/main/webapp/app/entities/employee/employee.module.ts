@@ -7,6 +7,7 @@ import {
     EmployeePopupService,
     EmployeeComponent,
     EmployeeDetailComponent,
+    EmployeeEditComponent,
     EmployeeDialogComponent,
     EmployeePopupComponent,
     EmployeeDeletePopupComponent,
@@ -14,6 +15,7 @@ import {
     employeeRoute,
     employeePopupRoute,
 } from './';
+
 
 const ENTITY_STATES = [
     ...employeeRoute,
@@ -32,6 +34,7 @@ const ENTITY_STATES = [
         EmployeeDeleteDialogComponent,
         EmployeePopupComponent,
         EmployeeDeletePopupComponent,
+        EmployeeEditComponent,
     ],
     entryComponents: [
         EmployeeComponent,

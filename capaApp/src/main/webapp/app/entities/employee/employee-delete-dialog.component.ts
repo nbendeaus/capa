@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 import { NgbActiveModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { EventManager } from 'ng-jhipster';
@@ -19,7 +19,8 @@ export class EmployeeDeleteDialogComponent {
     constructor(
         private employeeService: EmployeeService,
         public activeModal: NgbActiveModal,
-        private eventManager: EventManager
+        private eventManager: EventManager,
+        private router : Router,
     ) {
     }
 
@@ -34,6 +35,7 @@ export class EmployeeDeleteDialogComponent {
                 content: 'Deleted an employee'
             });
             this.activeModal.dismiss(true);
+            this.router.navigate(['dashboard/employee']);
         });
     }
 }

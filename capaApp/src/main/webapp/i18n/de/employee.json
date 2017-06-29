@@ -1,28 +1,22 @@
 {
-    "capaApp": {
-        "employee" : {
-            "home": {
-                "title": "Employees",
-                "createLabel": "Employee erstellen",
-                "createOrEditLabel": "Employee erstellen oder bearbeiten",
-                "search": "Suche nach Employee"
-            },
-            "delete": {
-                "question": "Soll Employee {{ id }} wirklich dauerhaft gelöscht werden?"
-            },
-            "detail": {
-                "title": "Employee"
-            },
-            "firstName": "First Name",
-            "lastName": "Last Name",
-            "email": "Email"
-        }
-    },
-    "capaApp": {
-        "employee" : {
-            "created": "Employee erstellt mit ID {{ param }}",
-            "updated": "Employee aktualisiert mit ID {{ param }}",
-            "deleted": "Employee gelöscht mit ID {{ param }}"
-        }
+    "employee": {
+        "home": {
+            "title": "Mitarbeiter",
+            "createLabel": "Mitarbeiter erstellen",
+            "createOrEditLabel": "Mitarbeiter erstellen oder bearbeiten",
+            "search": "Suche nach Mitarbeiter"
+        },
+        "delete": {
+            "question": "Soll Mitarbeiter {{ id }} wirklich dauerhaft gelöscht werden?"
+        },
+        "detail": {
+            "title": "Mitarbeiter"
+        },
+        "firstName": "Vorname",
+        "lastName": "Nachname",
+        "email": "Email",
+        "created": "Mitarbeiter erstellt mit ID {{ param }}",
+        "updated": "Mitarbeiter aktualisiert mit ID {{ param }}",
+        "deleted": "Mitarbeiter gelöscht mit ID {{ param }}"
     }
 }

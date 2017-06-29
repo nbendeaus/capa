@@ -22,4 +22,4 @@
 hs_err_pid*
 
 #node_modules
-/mainApp/node_modules
+/node_modules

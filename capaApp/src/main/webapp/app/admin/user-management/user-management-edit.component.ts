@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import {ActivatedRoute, Route, Router} from '@angular/router';
-import { Subscription } from 'rxjs/Rx';
+import {ActivatedRoute, Router} from '@angular/router';
 import {AlertService, EventManager} from 'ng-jhipster';
 
 import { User, UserService } from '../../shared';
@@ -16,9 +15,7 @@ export class UserMgmtEditComponent implements OnInit, OnDestroy {
     languages: any[];
     authorities: any[];
     isSaving: Boolean;
-    isNewUser: Boolean;
     routeSub: any;
-    private subscription: Subscription;
 
     constructor(
         private userService: UserService,
@@ -47,7 +44,6 @@ export class UserMgmtEditComponent implements OnInit, OnDestroy {
             this.languages = languages;
         });
     }
-
     load(login?: string) {
         if (login) {
             this.userService.find(login).subscribe((user) => {
@@ -57,6 +53,7 @@ export class UserMgmtEditComponent implements OnInit, OnDestroy {
             this.user = new User();
         }
     }
+
 
 
     save() {

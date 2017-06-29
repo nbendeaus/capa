@@ -7,8 +7,8 @@ import { Employee } from './employee.model';
 @Injectable()
 export class EmployeeService {
 
-    private resourceUrl = 'capaapp/api/employees';
-    private resourceSearchUrl = 'capaapp/api/_search/employees';
+    private resourceUrl = 'employeeservice/api/employees';
+    private resourceSearchUrl = 'employeeservice/api/_search/employees';
 
     constructor(private http: Http) { }
 

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { navbarRoute } from '../app.route';
 import { errorRoute} from './';
 
 import {FullLayoutComponent} from './layout/full-layout.component';
@@ -10,10 +9,7 @@ import {DashboardComponent} from "../dashboard/dashboard.component";
 import {JhiLoginModalComponent} from "../shared/login/login.component";
 import {UserRouteAccessService} from "../shared/index";
 import {adminState} from "../admin/admin.route";
-
-const LAYOUT_ROUTES = [
-    navbarRoute,
-];
+import {employeePopupRoute, employeeRoute} from "../entities/employee/employee.route";
 
 const ROUTES = [
     {
@@ -39,6 +35,7 @@ const ROUTES = [
                 },
                 children: [
                     ...adminState,
+                    ...employeeRoute,
                 ]
             },
         ]
@@ -46,14 +43,18 @@ const ROUTES = [
     {
         path: 'login',
         component: JhiLoginModalComponent,
+        data: {
+            pageTitle: 'login.title',
+            title: 'Login'
+        },
     },
 
         ...errorRoute,
 
-    // {
-    //     path: '**',
-    //     redirectTo: '404'
-    // },
+    {
+        path: '**',
+        redirectTo: '404'
+    },
 ];
 
 @NgModule({
