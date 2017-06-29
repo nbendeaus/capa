@@ -65,62 +65,62 @@
           Actions
         </li>
           <li class="nav-item" routerLinkActive="open" appNavDropdown>
-              <a class="nav-link" routerLink="employee" routerLinkActive="active"><i class="icon-user"></i> Employees</a>
+              <a class="nav-link" [routerLink]="['/employee']" routerLinkActive="active"><i class="icon-user"></i> Employees</a>
           </li>
         <li class="divider"></li>
         <li *jhiHasAnyAuthority="'ROLE_ADMIN'"  class="nav-title">
           Administration
         </li>
         <li class="nav-item">
-          <a *jhiHasAnyAuthority="'ROLE_ADMIN'" routerLink="gateway" routerLinkActive="active" class="nav-link">
+          <a *jhiHasAnyAuthority="'ROLE_ADMIN'" [routerLink]="['/gateway']" routerLinkActive="active" class="nav-link">
               <i class="icon-map" aria-hidden="true"></i>
               <span jhiTranslate="global.menu.admin.gateway">Gateway</span>
           </a>
         </li>
           <li class="nav-item">
-              <a *jhiHasAnyAuthority="'ROLE_ADMIN'" routerLink="docs" routerLinkActive="active" class="nav-link">
+              <a *jhiHasAnyAuthority="'ROLE_ADMIN'" [routerLink]="['/docs']" routerLinkActive="active" class="nav-link">
                   <i class="icon-docs" aria-hidden="true"></i>
                   <span jhiTranslate="global.menu.admin.apidocs">API</span>
               </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" *jhiHasAnyAuthority="'ROLE_ADMIN'"  routerLink="user-management" routerLinkActive="active">
+            <a class="nav-link" *jhiHasAnyAuthority="'ROLE_ADMIN'"  [routerLink]="['/user-management']" routerLinkActive="active">
                 <i class="icon-people" aria-hidden="true"></i>
                 <span jhiTranslate="global.menu.admin.userManagement">User management</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" *jhiHasAnyAuthority="'ROLE_ADMIN'"  routerLink="jhi-tracker" routerLinkActive="active">
+            <a class="nav-link" *jhiHasAnyAuthority="'ROLE_ADMIN'"  [routerLink]="['/jhi-tracker']" routerLinkActive="active">
                 <i class="icon-user-follow" aria-hidden="true"></i>
                 <span jhiTranslate="global.menu.admin.tracker">User tracker</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" *jhiHasAnyAuthority="'ROLE_ADMIN'"  routerLink="jhi-metrics" routerLinkActive="active">
+            <a class="nav-link" *jhiHasAnyAuthority="'ROLE_ADMIN'"  [routerLink]="['/jhi-metrics']" routerLinkActive="active">
                 <i class="icon-speedometer" aria-hidden="true"></i>
                 <span jhiTranslate="global.menu.admin.metrics">Metrics</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" *jhiHasAnyAuthority="'ROLE_ADMIN'"  routerLink="jhi-health" routerLinkActive="active" >
+            <a class="nav-link" *jhiHasAnyAuthority="'ROLE_ADMIN'"  [routerLink]="['/jhi-health']" routerLinkActive="active" >
                 <i class="icon-heart" aria-hidden="true"></i>
                 <span jhiTranslate="global.menu.admin.health">Health</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" *jhiHasAnyAuthority="'ROLE_ADMIN'"  routerLink="jhi-configuration" routerLinkActive="active" >
+            <a class="nav-link" *jhiHasAnyAuthority="'ROLE_ADMIN'"  [routerLink]="['/jhi-configuration']" routerLinkActive="active" >
                 <i class="icon-list" aria-hidden="true"></i>
                 <span jhiTranslate="global.menu.admin.configuration">Configuration</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link"  *jhiHasAnyAuthority="'ROLE_ADMIN'"  routerLink="audits" routerLinkActive="active" >
+            <a class="nav-link"  *jhiHasAnyAuthority="'ROLE_ADMIN'"  [routerLink]="['/audits']" routerLinkActive="active" >
                 <i class="icon-bell" aria-hidden="true"></i>
                 <span jhiTranslate="global.menu.admin.audits">Audits</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" *jhiHasAnyAuthority="'ROLE_ADMIN'"  routerLink="logs" routerLinkActive="active" >
+            <a class="nav-link" *jhiHasAnyAuthority="'ROLE_ADMIN'"  [routerLink]="['/logs']" routerLinkActive="active" >
                 <i class="icon-book-open" aria-hidden="true"></i>
                 <span jhiTranslate="global.menu.admin.logs">Logs</span>
             </a>

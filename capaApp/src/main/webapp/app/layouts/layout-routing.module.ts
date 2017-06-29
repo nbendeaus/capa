@@ -22,7 +22,7 @@ const ROUTES = [
         component: FullLayoutComponent,
         data: {
             pageTitle: 'Home',
-            title: 'Capa'
+            title: ''
         },
         children: [
             {
@@ -33,11 +33,10 @@ const ROUTES = [
                     pageTitle: 'dashboard.title',
                     title: 'Dashboard'
                 },
-                children: [
-                    ...adminState,
-                    ...employeeRoute,
-                ]
             },
+
+            ...adminState,
+            ...employeeRoute,
         ]
     },
     {
@@ -51,10 +50,10 @@ const ROUTES = [
 
         ...errorRoute,
 
-    {
-        path: '**',
-        redirectTo: '404'
-    },
+    // {
+    //     path: '**',
+    //     redirectTo: '404'
+    // },
 ];
 
 @NgModule({

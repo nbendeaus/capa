@@ -68,11 +68,7 @@ export class UserMgmtEditComponent implements OnInit, OnDestroy {
     }
 
     back() {
-        if (this.user.id !== null) {
-            this.router.navigate(['/dashboard/user-management'])
-        } else {
-            this.router.navigate(['/dashboard/user-management'])
-        }
+        this.router.navigate(['/user-management'])
     }
 
     private onSaveSuccess(result) {

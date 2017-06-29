@@ -62,7 +62,7 @@ export class EmployeeEditComponent implements OnInit {
 
 
     back() {
-       this.router.navigate(['/dashboard/employee']);
+       this.router.navigate(['/employee']);
     }
 
     private subscribeToSaveResponse(result: Observable<Employee>) {

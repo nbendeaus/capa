@@ -35,7 +35,7 @@ export class EmployeeDeleteDialogComponent {
                 content: 'Deleted an employee'
             });
             this.activeModal.dismiss(true);
-            this.router.navigate(['dashboard/employee']);
+            this.router.navigate(['/employee']);
         });
     }
 }
