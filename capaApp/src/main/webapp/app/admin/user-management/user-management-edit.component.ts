@@ -4,6 +4,8 @@ import {AlertService, EventManager} from 'ng-jhipster';
 
 import { User, UserService } from '../../shared';
 import {JhiLanguageHelper} from "../../shared/language/language.helper";
+import {Principal} from "../../shared/auth/principal.service";
+import JsApiReporter = jasmine.JsApiReporter;
 
 @Component({
     selector: 'jhi-user-mgmt-edit',
@@ -16,6 +18,7 @@ export class UserMgmtEditComponent implements OnInit, OnDestroy {
     authorities: any[];
     isSaving: Boolean;
     routeSub: any;
+    edit: Boolean;
 
     constructor(
         private userService: UserService,
@@ -26,6 +29,7 @@ export class UserMgmtEditComponent implements OnInit, OnDestroy {
         private router : Router,
     ) {
     }
+
 
     ngOnInit() {
         this.isSaving = false;
@@ -48,9 +52,11 @@ export class UserMgmtEditComponent implements OnInit, OnDestroy {
         if (login) {
             this.userService.find(login).subscribe((user) => {
                 this.user = user;
+                this.edit = true;
             });
         } else {
             this.user = new User();
+            this.edit = false;
         }
     }
 
@@ -59,10 +65,9 @@ export class UserMgmtEditComponent implements OnInit, OnDestroy {
     save() {
         this.isSaving = true;
         if (this.user.id !== null) {
-            console.log("Update: " + this.user.login);
             this.userService.update(this.user).subscribe((response) => this.onSaveSuccess(response), (response) => this.onSaveError(response.json()));
         } else {
-            console.log("Create: " + this.user.login);
+            console.log("USER:" + JSON.stringify(this.user));
             this.userService.create(this.user).subscribe((response) => this.onSaveSuccess(response), (response) => this.onSaveError(response.json()));
         }
     }

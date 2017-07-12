@@ -10,6 +10,10 @@ import {JhiLoginModalComponent} from "../shared/login/login.component";
 import {UserRouteAccessService} from "../shared/index";
 import {adminState} from "../admin/admin.route";
 import {employeePopupRoute, employeeRoute} from "../entities/employee/employee.route";
+import {accountState} from "../account/account.route";
+import {PasswordResetInitComponent} from "../account/password-reset/init/password-reset-init.component";
+import {passwordResetFinishRoute} from "../account/password-reset/finish/password-reset-finish.route";
+import {passwordResetInitRoute} from "../account/password-reset/init/password-reset-init.route";
 
 const ROUTES = [
     {
@@ -37,7 +41,9 @@ const ROUTES = [
 
             ...adminState,
             ...employeeRoute,
-        ]
+            ...accountState,
+
+        ],
     },
     {
         path: 'login',
@@ -46,9 +52,14 @@ const ROUTES = [
             pageTitle: 'login.title',
             title: 'Login'
         },
+        children:[
+            passwordResetFinishRoute,
+            passwordResetInitRoute,
+        ]
     },
 
-        ...errorRoute,
+
+    ...errorRoute,
 
     // {
     //     path: '**',

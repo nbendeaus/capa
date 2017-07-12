@@ -46,6 +46,28 @@
                             </div>
                             </div>
                         </div>
+                            <div class="form-group row" *ngIf="!edit">
+                                <label class="form-control-label col-md-3"  for="password" jhiTranslate="userManagement.password">Password</label>
+                                <div class="col-md-9">
+                                <input type="password" class="form-control" id="password" name="password" #password="ngModel"
+                                       [(ngModel)]="user.password" minlength=4 maxlength=50 required>
+                                <div *ngIf="password.dirty && password.invalid">
+                                    <small class="form-text text-danger" *ngIf="password.errors.required"
+                                           jhiTranslate="global.messages.validate.newpassword.required">
+                                        Your password is required.
+                                    </small>
+                                    <small class="form-text text-danger" *ngIf="password.errors.minlength"
+                                           jhiTranslate="global.messages.validate.newpassword.minlength">
+                                        Your password is required to be at least 4 characters.
+                                    </small>
+                                    <small class="form-text text-danger" *ngIf="password.errors.maxlength"
+                                           jhiTranslate="global.messages.validate.newpassword.maxlength">
+                                        Your password cannot be longer than 50 characters.
+                                    </small>
+                                </div>
+                                <jhi-password-strength-bar [passwordToCheck]="user.password"></jhi-password-strength-bar>
+                            </div>
+                            </div>
                         <div class="form-group row">
                             <label class="form-control-label col-md-3" jhiTranslate="userManagement.firstName">First Name</label>
                             <div class="col-md-9">

@@ -30,11 +30,12 @@ export class PasswordResetInitComponent implements OnInit, AfterViewInit {
     requestReset() {
         this.error = null;
         this.errorEmailNotExists = null;
-
+        console.log("EMAIL LOGIN" + this.resetAccount.email);
         this.passwordResetInit.save(this.resetAccount.email).subscribe(() => {
             this.success = 'OK';
         }, (response) => {
             this.success = null;
+
             if (response.status === 400 && response.data === 'email address not registered') {
                 this.errorEmailNotExists = 'ERROR';
             } else {

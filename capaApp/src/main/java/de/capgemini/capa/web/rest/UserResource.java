@@ -86,9 +86,7 @@ public class UserResource {
     /**
      * POST  /users  : Creates a new user.
      * <p>
-     * Creates a new user if the login and email are not already used, and sends an
-     * mail with an activation link.
-     * The user needs to be activated on creation.
+     * Creates a new user if the login and email are not already used.
      * </p>
      *
      * @param managedUserVM the user to create
@@ -116,7 +114,6 @@ public class UserResource {
                 .body(null);
         } else {
             User newUser = userService.createUser(managedUserVM);
-            mailService.sendCreationEmail(newUser);
             return ResponseEntity.created(new URI("/api/users/" + newUser.getLogin()))
                 .headers(HeaderUtil.createAlert( "userManagement.created", newUser.getLogin()))
                 .body(newUser);

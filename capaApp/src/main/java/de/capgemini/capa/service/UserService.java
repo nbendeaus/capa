@@ -11,6 +11,7 @@ import de.capgemini.capa.security.SecurityUtils;
 import de.capgemini.capa.service.util.RandomUtil;
 import de.capgemini.capa.service.dto.UserDTO;
 
+import de.capgemini.capa.web.rest.vm.ManagedUserVM;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -112,7 +113,7 @@ public class UserService {
         return newUser;
     }
 
-    public User createUser(UserDTO userDTO) {
+    public User createUser(ManagedUserVM userDTO) {
         User user = new User();
         user.setLogin(userDTO.getLogin());
         user.setFirstName(userDTO.getFirstName());
@@ -131,11 +132,13 @@ public class UserService {
             );
             user.setAuthorities(authorities);
         }
-        String encryptedPassword = passwordEncoder.encode(RandomUtil.generatePassword());
-        user.setPassword(encryptedPassword);
-        user.setResetKey(RandomUtil.generateResetKey());
-        user.setResetDate(Instant.now());
+//       String encryptedPassword = passwordEncoder.encode(RandomUtil.generatePassword());
+//       user.setPassword(encryptedPassword);
+//       user.setResetKey(RandomUtil.generateResetKey());
+//       user.setResetDate(Instant.now());
+        user.setPassword(passwordEncoder.encode(userDTO.getPassword()));
         user.setActivated(true);
+        user.setActivationKey(RandomUtil.generateActivationKey());
         userRepository.save(user);
         userSearchRepository.save(user);
         log.debug("Created Information for User: {}", user);
