@@ -7,7 +7,7 @@ import {Observable} from "rxjs/Observable";
 
 @Component({
     selector: 'employee-edit',
-    templateUrl: './employee-edit.component.html'
+    templateUrl: './document-file-edit.component.html'
 })
 export class EmployeeEditComponent implements OnInit {
 

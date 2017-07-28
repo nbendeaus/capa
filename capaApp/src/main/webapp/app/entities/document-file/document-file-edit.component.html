@@ -1,0 +1,100 @@
+<div *ngIf="documentFile" style="margin-bottom: 20px">
+    <h2>
+        <span jhiTranslate="capaApp.documentFile.home.createOrEditLabel">Upload an new CSV File</span>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <button style="margin-top: 2px;" type="button" class="btn btn-outline-secondary float-right" (click)="back()" >
+                            <span class="fa fa-ban"></span> <span jhiTranslate="entity.action.back">Back</span>
+                        </button>
+                        <button style="margin-top: 2px; margin-right: 5px;" type="submit" (click)="save()" [disabled]="editForm.form.invalid || isSaving" class="btn btn-outline-primary float-right">
+                            <span class="fa fa-floppy-o"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                        </button>
+                    </div>
+                    <div class="card-block">
+                        <form action="" method="post" enctype="multipart/form-data" class="form-horizontal" name="editForm" role="form" novalidate #editForm="ngForm">
+                            <div class="form-group row" [hidden]="!documentFile.id">
+                                <label class="form-control-label col-md-3" jhiTranslate="global.field.id">ID</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" name="id"
+                                           [(ngModel)]="documentFile.id" readonly >
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="form-control-label col-md-3" jhiTranslate="capaApp.documentFile.title" for="field_title">Title</label>
+                                <div class="col-md-9">
+                                <input type="text" class="form-control" name="title" id="field_title"
+                                       [(ngModel)]="documentFile.title"
+                                       required minlength="2" />
+                                <div [hidden]="!(editForm.controls.title?.dirty && editForm.controls.title?.invalid)">
+                                    <small class="form-text text-danger"
+                                           [hidden]="!editForm.controls.title?.errors?.required" jhiTranslate="entity.validation.required">
+                                        This field is required.
+                                    </small>
+                                    <small class="form-text text-danger"
+                                           [hidden]="!editForm.controls.title?.errors?.minlength" jhiTranslate="entity.validation.minlength" translateValues="{ min: 2 }">
+                                        This field is required to be at least 2 characters.
+                                    </small>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="form-control-label col-md-3" jhiTranslate="capaApp.documentFile.author" for="field_author">Author</label>
+                                <div class="col-md-9">
+                                <input type="text" class="form-control" name="author" id="field_author"
+                                       [(ngModel)]="documentFile.author"
+                                       required />
+                                <div [hidden]="!(editForm.controls.author?.dirty && editForm.controls.author?.invalid)">
+                                    <small class="form-text text-danger"
+                                           [hidden]="!editForm.controls.author?.errors?.required" jhiTranslate="entity.validation.required">
+                                        This field is required.
+                                    </small>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="form-control-label col-md-3" jhiTranslate="capaApp.documentFile.file" for="field_file">File</label>
+                                <div class="col-md-9">
+                                    <!--&lt;!&ndash; File input for the file-upload plugin, with special ng2-file-upload directive called ng2FileSelect &ndash;&gt;-->
+                                    <!--<input type="file" name="photo" ng2FileSelect [uploader]="uploader" />-->
+                                    <!--&lt;!&ndash; button to trigger the file upload when submitted &ndash;&gt;-->
+                                    <!--<button type="button" class="btn btn-success btn-s" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">-->
+                                        <!--Upload with ng-2 file uploader-->
+                                    <!--</button>-->
+                                    <div *ngIf="documentFile.file" class="form-text text-danger clearfix">
+                                        <a class="pull-left" (click)="openFile(documentFile.fileContentType, documentFile.file)" jhiTranslate="entity.action.open">open</a><br>
+                                        <span class="pull-left">{{documentFile.fileContentType}}, {{byteSize(documentFile.file)}}</span>
+                                        <button type="button" (click)="documentFile.file=null;documentFile.fileContentType=null;"
+                                                class="btn btn-default btn-xs pull-right">
+                                            <span class="fa fa-times"></span>
+                                        </button>
+                                    </div>
+                                    <input type="file" (change)="setFileData($event, documentFile, 'file', false)" jhiTranslate="entity.action.addblob"/>
+                                </div>
+                                <input type="hidden" class="form-control" name="file" id="field_file"
+                                       [(ngModel)]="documentFile.file"
+                                       required />
+                                <input type="hidden" class="form-control" name="fileContentType" id="field_fileContentType"
+                                       [(ngModel)]="documentFile.fileContentType" />
+                                <div [hidden]="!(editForm.controls.file?.dirty && editForm.controls.file?.invalid)">
+                                    <small class="form-text text-danger"
+                                           [hidden]="!editForm.controls.file?.errors?.required" jhiTranslate="entity.validation.required">
+                                        This field is required.
+                                    </small>
+                                </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

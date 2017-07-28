@@ -1,0 +1,29 @@
+{
+    "capaApp": {
+        "documentFile" : {
+            "home": {
+                "title": "Document Files",
+                "createLabel": "Document File erstellen",
+                "createOrEditLabel": "Document File erstellen oder bearbeiten",
+                "search": "Suche nach Document File"
+            },
+            "delete": {
+                "question": "Soll Document File {{ id }} wirklich dauerhaft gelöscht werden?"
+            },
+            "detail": {
+                "title": "Document File"
+            },
+            "title": "Title",
+            "author": "Author",
+            "file": "File",
+            "description": "Description"
+        }
+    },
+    "fileuploadserviceApp": {
+        "documentFile" : {
+            "created": "Document File erstellt mit ID {{ param }}",
+            "updated": "Document File aktualisiert mit ID {{ param }}",
+            "deleted": "Document File gelöscht mit ID {{ param }}"
+        }
+    }
+}

@@ -1,0 +1,41 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.capgemini.capa",
+      "nativeLanguage": "de"
+    },
+    "jhipsterVersion": "4.6.2",
+    "baseName": "fileUploadService",
+    "packageName": "com.capgemini.capa",
+    "packageFolder": "com/capgemini/capa",
+    "serverPort": "8122",
+    "authenticationType": "jwt",
+    "hibernateCache": "no",
+    "clusteredHttpSession": false,
+    "websocket": false,
+    "databaseType": "mongodb",
+    "devDatabaseType": "mongodb",
+    "prodDatabaseType": "mongodb",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": "eureka",
+    "buildTool": "maven",
+    "enableSocialSignIn": false,
+    "jwtSecretKey": "c2e21bfa286848f4effce1c7d607d450ff7c9277",
+    "enableTranslation": true,
+    "applicationType": "microservice",
+    "testFrameworks": [
+      "gatling",
+      "cucumber"
+    ],
+    "jhiPrefix": "jhi",
+    "skipClient": true,
+    "skipUserManagement": true,
+    "nativeLanguage": "de",
+    "languages": [
+      "de",
+      "en"
+    ],
+    "clientPackageManager": "yarn"
+  }
+}

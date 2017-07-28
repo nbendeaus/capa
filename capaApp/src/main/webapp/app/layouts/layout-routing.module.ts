@@ -14,6 +14,7 @@ import {accountState} from "../account/account.route";
 import {PasswordResetInitComponent} from "../account/password-reset/init/password-reset-init.component";
 import {passwordResetFinishRoute} from "../account/password-reset/finish/password-reset-finish.route";
 import {passwordResetInitRoute} from "../account/password-reset/init/password-reset-init.route";
+import {documentFileRoute} from "../entities/document-file/document-file.route";
 
 const ROUTES = [
     {
@@ -41,6 +42,7 @@ const ROUTES = [
 
             ...adminState,
             ...employeeRoute,
+            ...documentFileRoute,
             ...accountState,
 
         ],
