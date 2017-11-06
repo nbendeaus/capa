@@ -16,6 +16,8 @@ public class AuthHelper {
 
     private static final String authority = "https://login.microsoftonline.com";
     private static final String authorizeUrl = authority + "/common/oauth2/v2.0/authorize";
+    private static final String authorizeAdminUrl = authority + "/common/adminconsent";
+    private static final String scope = "https://graph.microsoft.com/.default";
 
     private static String[] scopes = {
         "openid",
@@ -103,5 +105,23 @@ public class AuthHelper {
         urlBuilder.queryParam("response_mode", "form_post");
 
         return urlBuilder.toUriString();
+    }
+
+    public static String getAdminLoginUrl(UUID state) {
+        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(authorizeAdminUrl);
+        builder.queryParam("client_id", getAppId());
+        builder.queryParam("redirect_uri", getRedirectUrl());
+        builder.queryParam("state", state);
+        return builder.toUriString();
+    }
+
+    public static String getAccessTokenUrl(String tenant) {
+        String url = authority + "/" + tenant + "/oauth2/v2.0/token";
+        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(url);
+        builder.queryParam("client_id", getAppId());
+        builder.queryParam("scope", scope);
+        builder.queryParam("client_secret", "");
+        builder.queryParam("grant_type", "client_credentials");
+        return builder.toUriString();
     }
 }

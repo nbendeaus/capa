@@ -19,6 +19,7 @@ module.exports = {
             'chart.js',
             'ng-jhipster',
             'ng2-webstorage',
+            'ng2-file-upload',
             'sockjs-client',
             'webstomp-client',
             'rxjs'

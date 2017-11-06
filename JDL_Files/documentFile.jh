@@ -1,0 +1,21 @@
+
+/**
+ * The Document file entity.
+ */
+entity DocumentFile {
+	title String required minlength(2),
+	author String required,
+    file AnyBlob required,
+    description String maxlength(150),
+}
+
+// Set pagination options
+paginate all with infinite-scroll
+
+microservice * with fileuploadservice
+
+//service all with serviceClass
+// Set service options to all except few
+//service all with serviceImpl except Employee, Job
+// Set an angular suffix
+//angularSuffix * with mySuffix

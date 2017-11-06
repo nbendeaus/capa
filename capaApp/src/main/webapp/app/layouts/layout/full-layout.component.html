@@ -62,6 +62,9 @@
           <li class="nav-item" routerLinkActive="open" appNavDropdown>
               <a class="nav-link" [routerLink]="['/employee']" routerLinkActive="active"><i class="icon-user"></i> Employees</a>
           </li>
+          <li class="nav-item" routerLinkActive="open" appNavDropdown>
+              <a class="nav-link" [routerLink]="['/document-file']" routerLinkActive="active"><i class="icon-user"></i> FileUpload</a>
+          </li>
         <li class="divider"></li>
         <li *jhiHasAnyAuthority="'ROLE_ADMIN'"  class="nav-title">
           Administration

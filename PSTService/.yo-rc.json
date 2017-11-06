@@ -1,0 +1,41 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.capgemini.capa",
+      "nativeLanguage": "de"
+    },
+    "jhipsterVersion": "4.6.2",
+    "baseName": "PSTService",
+    "packageName": "com.capgemini.capa",
+    "packageFolder": "com/capgemini/capa",
+    "serverPort": "8011",
+    "authenticationType": "jwt",
+    "hibernateCache": "hazelcast",
+    "clusteredHttpSession": false,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "mysql",
+    "searchEngine": "elasticsearch",
+    "messageBroker": false,
+    "serviceDiscoveryType": "eureka",
+    "buildTool": "maven",
+    "enableSocialSignIn": false,
+    "jwtSecretKey": "f090ed9f20ded1bf4e4e286e134b8dc6c83583e0",
+    "enableTranslation": true,
+    "applicationType": "microservice",
+    "testFrameworks": [
+      "gatling",
+      "cucumber"
+    ],
+    "jhiPrefix": "jhi",
+    "skipClient": true,
+    "skipUserManagement": true,
+    "nativeLanguage": "de",
+    "languages": [
+      "de",
+      "en"
+    ],
+    "clientPackageManager": "yarn"
+  }
+}

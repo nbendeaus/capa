@@ -1,0 +1,40 @@
+
+<div *ngIf="documentFile">
+    <h2><span jhiTranslate="capaApp.documentFile.detail.title">Document File</span> {{documentFile.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="capaApp.documentFile.title">Title</span></dt>
+        <dd>
+            <span>{{documentFile.title}}</span>
+        </dd>
+        <dt><span jhiTranslate="capaApp.documentFile.author">Author</span></dt>
+        <dd>
+            <span>{{documentFile.author}}</span>
+        </dd>
+        <dt><span jhiTranslate="capaApp.documentFile.file">File</span></dt>
+        <dd>
+            <div *ngIf="documentFile.file">
+                <a (click)="openFile(documentFile.fileContentType, documentFile.file)" jhiTranslate="entity.action.open">open</a>
+                {{documentFile.fileContentType}}, {{byteSize(documentFile.file)}}
+            </div>
+        </dd>
+        <dt><span jhiTranslate="capaApp.documentFile.description">Description</span></dt>
+        <dd>
+            <span>{{documentFile.description}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'document-file/'+ documentFile.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

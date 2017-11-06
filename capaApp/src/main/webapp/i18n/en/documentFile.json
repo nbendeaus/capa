@@ -1,0 +1,29 @@
+{
+    "capaApp": {
+        "documentFile" : {
+            "home": {
+                "title": "Document Files",
+                "createLabel": "Create a new Document File",
+                "createOrEditLabel": "Create or edit a Document File",
+                "search": "Search for Document File"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Document File {{ id }}?"
+            },
+            "detail": {
+                "title": "Document File"
+            },
+            "title": "Title",
+            "author": "Author",
+            "file": "File",
+            "description": "Description"
+        }
+    },
+    "fileuploadserviceApp": {
+        "documentFile" : {
+            "created": "A new Document File is created with identifier {{ param }}",
+            "updated": "A Document File is updated with identifier {{ param }}",
+            "deleted": "A Document File is deleted with identifier {{ param }}"
+        }
+    }
+}
