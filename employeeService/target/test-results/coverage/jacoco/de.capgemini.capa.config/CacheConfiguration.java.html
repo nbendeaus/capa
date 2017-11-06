@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CacheConfiguration.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Employee Service</a> &gt; <a href="index.source.html" class="el_package">de.capgemini.capa.config</a> &gt; <span class="el_source">CacheConfiguration.java</span></div><h1>CacheConfiguration.java</h1><pre class="source lang-java linenums">package de.capgemini.capa.config;
+
+import io.github.jhipster.config.JHipsterConstants;
+import io.github.jhipster.config.JHipsterProperties;
+
+import com.hazelcast.config.Config;
+import com.hazelcast.core.HazelcastInstance;
+import com.hazelcast.core.Hazelcast;
+import com.hazelcast.config.MapConfig;
+import com.hazelcast.config.EvictionPolicy;
+import com.hazelcast.config.MaxSizeConfig;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.AutoConfigureAfter;
+import org.springframework.boot.autoconfigure.AutoConfigureBefore;
+import org.springframework.boot.autoconfigure.web.ServerProperties;
+
+import org.springframework.cache.CacheManager;
+import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.springframework.cloud.client.serviceregistry.Registration;
+import org.springframework.context.annotation.*;
+import org.springframework.core.env.Environment;
+
+import javax.annotation.PreDestroy;
+
+@Configuration
+@EnableCaching
+@AutoConfigureAfter(value = { MetricsConfiguration.class })
+@AutoConfigureBefore(value = { WebConfigurer.class, DatabaseConfiguration.class })
+public class CacheConfiguration {
+
+<span class="fc" id="L37">    private final Logger log = LoggerFactory.getLogger(CacheConfiguration.class);</span>
+
+    private final Environment env;
+
+    private final ServerProperties serverProperties;
+
+    private final DiscoveryClient discoveryClient;
+
+    private Registration registration;
+
+<span class="fc" id="L47">    public CacheConfiguration(Environment env, ServerProperties serverProperties, DiscoveryClient discoveryClient) {</span>
+<span class="fc" id="L48">        this.env = env;</span>
+<span class="fc" id="L49">        this.serverProperties = serverProperties;</span>
+<span class="fc" id="L50">        this.discoveryClient = discoveryClient;</span>
+<span class="fc" id="L51">    }</span>
+
+    @Autowired(required = false)
+    public void setRegistration(Registration registration) {
+<span class="fc" id="L55">        this.registration = registration;</span>
+<span class="fc" id="L56">    }</span>
+
+    @PreDestroy
+    public void destroy() {
+<span class="nc" id="L60">        log.info(&quot;Closing Cache Manager&quot;);</span>
+<span class="nc" id="L61">        Hazelcast.shutdownAll();</span>
+<span class="nc" id="L62">    }</span>
+
+    @Bean
+    public CacheManager cacheManager(HazelcastInstance hazelcastInstance) {
+<span class="fc" id="L66">        log.debug(&quot;Starting HazelcastCacheManager&quot;);</span>
+<span class="fc" id="L67">        CacheManager cacheManager = new com.hazelcast.spring.cache.HazelcastCacheManager(hazelcastInstance);</span>
+<span class="fc" id="L68">        return cacheManager;</span>
+    }
+
+    @Bean
+    public HazelcastInstance hazelcastInstance(JHipsterProperties jHipsterProperties) {
+<span class="fc" id="L73">        log.debug(&quot;Configuring Hazelcast&quot;);</span>
+<span class="fc" id="L74">        HazelcastInstance hazelCastInstance = Hazelcast.getHazelcastInstanceByName(&quot;employeeService&quot;);</span>
+<span class="pc bpc" id="L75" title="1 of 2 branches missed.">        if (hazelCastInstance != null) {</span>
+<span class="nc" id="L76">            log.debug(&quot;Hazelcast already initialized&quot;);</span>
+<span class="nc" id="L77">            return hazelCastInstance;</span>
+        }
+<span class="fc" id="L79">        Config config = new Config();</span>
+<span class="fc" id="L80">        config.setInstanceName(&quot;employeeService&quot;);</span>
+<span class="fc" id="L81">        config.getNetworkConfig().getJoin().getMulticastConfig().setEnabled(false);</span>
+<span class="pc bpc" id="L82" title="1 of 2 branches missed.">        if (this.registration == null) {</span>
+<span class="nc" id="L83">            log.warn(&quot;No discovery service is set up, Hazelcast cannot create a cluster.&quot;);</span>
+        } else {
+            // The serviceId is by default the application's name, see Spring Boot's eureka.instance.appname property
+<span class="fc" id="L86">            String serviceId = registration.getServiceId();</span>
+<span class="fc" id="L87">            log.debug(&quot;Configuring Hazelcast clustering for instanceId: {}&quot;, serviceId);</span>
+            // In development, everything goes through 127.0.0.1, with a different port
+<span class="pc bpc" id="L89" title="1 of 2 branches missed.">            if (env.acceptsProfiles(JHipsterConstants.SPRING_PROFILE_DEVELOPMENT)) {</span>
+<span class="nc" id="L90">                log.debug(&quot;Application is running with the \&quot;dev\&quot; profile, Hazelcast &quot; +</span>
+                          &quot;cluster will only work with localhost instances&quot;);
+
+<span class="nc" id="L93">                System.setProperty(&quot;hazelcast.local.localAddress&quot;, &quot;127.0.0.1&quot;);</span>
+<span class="nc" id="L94">                config.getNetworkConfig().setPort(serverProperties.getPort() + 5701);</span>
+<span class="nc" id="L95">                config.getNetworkConfig().getJoin().getTcpIpConfig().setEnabled(true);</span>
+<span class="nc bnc" id="L96" title="All 2 branches missed.">                for (ServiceInstance instance : discoveryClient.getInstances(serviceId)) {</span>
+<span class="nc" id="L97">                    String clusterMember = &quot;127.0.0.1:&quot; + (instance.getPort() + 5701);</span>
+<span class="nc" id="L98">                    log.debug(&quot;Adding Hazelcast (dev) cluster member &quot; + clusterMember);</span>
+<span class="nc" id="L99">                    config.getNetworkConfig().getJoin().getTcpIpConfig().addMember(clusterMember);</span>
+<span class="nc" id="L100">                }</span>
+            } else { // Production configuration, one host per instance all using port 5701
+<span class="fc" id="L102">                config.getNetworkConfig().setPort(5701);</span>
+<span class="fc" id="L103">                config.getNetworkConfig().getJoin().getTcpIpConfig().setEnabled(true);</span>
+<span class="pc bpc" id="L104" title="1 of 2 branches missed.">                for (ServiceInstance instance : discoveryClient.getInstances(serviceId)) {</span>
+<span class="nc" id="L105">                    String clusterMember = instance.getHost() + &quot;:5701&quot;;</span>
+<span class="nc" id="L106">                    log.debug(&quot;Adding Hazelcast (prod) cluster member &quot; + clusterMember);</span>
+<span class="nc" id="L107">                    config.getNetworkConfig().getJoin().getTcpIpConfig().addMember(clusterMember);</span>
+<span class="nc" id="L108">                }</span>
+            }
+        }
+<span class="fc" id="L111">        config.getMapConfigs().put(&quot;default&quot;, initializeDefaultMapConfig());</span>
+<span class="fc" id="L112">        config.getMapConfigs().put(&quot;de.capgemini.capa.domain.*&quot;, initializeDomainMapConfig(jHipsterProperties));</span>
+<span class="fc" id="L113">        return Hazelcast.newHazelcastInstance(config);</span>
+    }
+
+    private MapConfig initializeDefaultMapConfig() {
+<span class="fc" id="L117">        MapConfig mapConfig = new MapConfig();</span>
+
+    /*
+        Number of backups. If 1 is set as the backup-count for example,
+        then all entries of the map will be copied to another JVM for
+        fail-safety. Valid numbers are 0 (no backup), 1, 2, 3.
+     */
+<span class="fc" id="L124">        mapConfig.setBackupCount(0);</span>
+
+    /*
+        Valid values are:
+        NONE (no eviction),
+        LRU (Least Recently Used),
+        LFU (Least Frequently Used).
+        NONE is the default.
+     */
+<span class="fc" id="L133">        mapConfig.setEvictionPolicy(EvictionPolicy.LRU);</span>
+
+    /*
+        Maximum size of the map. When max size is reached,
+        map is evicted based on the policy defined.
+        Any integer between 0 and Integer.MAX_VALUE. 0 means
+        Integer.MAX_VALUE. Default is 0.
+     */
+<span class="fc" id="L141">        mapConfig.setMaxSizeConfig(new MaxSizeConfig(0, MaxSizeConfig.MaxSizePolicy.USED_HEAP_SIZE));</span>
+
+<span class="fc" id="L143">        return mapConfig;</span>
+    }
+
+    private MapConfig initializeDomainMapConfig(JHipsterProperties jHipsterProperties) {
+<span class="fc" id="L147">        MapConfig mapConfig = new MapConfig();</span>
+<span class="fc" id="L148">        mapConfig.setTimeToLiveSeconds(jHipsterProperties.getCache().getHazelcast().getTimeToLiveSeconds());</span>
+<span class="fc" id="L149">        return mapConfig;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

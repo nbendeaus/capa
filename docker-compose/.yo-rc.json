@@ -1,0 +1,14 @@
+{
+  "generator-jhipster": {
+    "appsFolders": [
+      "capaApp",
+      "employeeService",
+      "outlookService"
+    ],
+    "directoryPath": "../",
+    "monitoring": "elk",
+    "serviceDiscoveryType": "eureka",
+    "adminPassword": "capa17",
+    "jwtSecretKey": "67b8b6fa38663f981b165e7e9e5598ce2c5ac094"
+  }
+}

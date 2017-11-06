@@ -33,7 +33,7 @@ module.exports = {
         rules: [
             {
                 test: /(style\.scss|vendor\.scss|global\.scss)/,
-                loaders: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
+                loaders: ['style-loader', 'css-loader', 'sass-loader']
             },
             {
                 test: /\.(jpe?g|png|gif|svg|woff2?|ttf|eot)$/i,

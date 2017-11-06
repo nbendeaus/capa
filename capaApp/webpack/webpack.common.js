@@ -8,6 +8,8 @@ const WebpackNotifierPlugin = require('webpack-notifier');
 const MergeJsonWebpackPlugin = require("merge-jsons-webpack-plugin")
 const path = require('path');
 
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 module.exports = function (options) {
     const DATAS = {
         VERSION: JSON.stringify(require("../package.json").version),
@@ -39,21 +41,37 @@ module.exports = function (options) {
                 },
                 {
                     test: /\.scss$/,
-                    loaders: ['to-string-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
+                    loader: ExtractTextPlugin.extract({
+                        fallback: 'style-loader',
+                        loader: [
+                            { loader: 'css-loader', query: { modules: true, sourceMaps: true } },
+                            'postcss-loader'
+                        ]
+                    }),
                     exclude: /(style\.scss|vendor\.scss|global\.scss)/
                 },
                 {
                     test: /(style\.scss|vendor\.scss|global\.scss)/,
-                    loaders: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
+                    use: [
+                        'style-loader',
+                        { loader: 'css-loader', options: {modules: true, importLoaders: 1 } },
+                        'sass-loader'
+                    ],
                 },
                 {
                     test: /\.css$/,
-                    loaders: ['to-string-loader', 'css-loader'],
+                    use: [
+                        'to-string-loader',
+                        { loader: 'css-loader', options: { modules: true, importLoaders: 1 } }
+                    ],
                     exclude: /(style\.css|vendor\.css|global\.css)/
                 },
                 {
                     test: /(style\.css|vendor\.css|global\.css)/,
-                    loaders: ['style-loader', 'css-loader']
+                    use: [
+                        'style-loader',
+                        { loader: 'css-loader', options: { modules: true, importLoaders: 1 } }
+                    ],
                 },
                 {
                     test: /\.(jpe?g|png|gif|svg|woff2?|ttf|eot)$/i,
@@ -113,7 +131,7 @@ module.exports = function (options) {
             new WebpackNotifierPlugin({
                 title: 'Capa',
                 contentImage: path.join(__dirname, 'capa_logo.png')
-            })
+            }),
         ]
     };
 };

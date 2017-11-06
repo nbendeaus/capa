@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Employee.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Employee Service</a> &gt; <a href="index.source.html" class="el_package">de.capgemini.capa.domain</a> &gt; <span class="el_source">Employee.java</span></div><h1>Employee.java</h1><pre class="source lang-java linenums">package de.capgemini.capa.domain;
+
+import io.swagger.annotations.ApiModel;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.springframework.data.elasticsearch.annotations.Document;
+
+import javax.persistence.*;
+import javax.validation.constraints.*;
+import java.io.Serializable;
+import java.util.Objects;
+
+/**
+ * The Employee entity.
+ */
+@ApiModel(description = &quot;The Employee entity.&quot;)
+@Entity
+@Table(name = &quot;employee&quot;)
+@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+@Document(indexName = &quot;employee&quot;)
+<span class="fc" id="L21">public class Employee implements Serializable {</span>
+
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @NotNull
+    @Size(min = 2)
+    @Column(name = &quot;first_name&quot;, nullable = false)
+    private String firstName;
+
+    @NotNull
+    @Size(min = 2)
+    @Column(name = &quot;last_name&quot;, nullable = false)
+    private String lastName;
+
+    @NotNull
+    @Column(name = &quot;email&quot;, nullable = false)
+    private String email;
+
+    public Long getId() {
+<span class="fc" id="L44">        return id;</span>
+    }
+
+    public void setId(Long id) {
+<span class="fc" id="L48">        this.id = id;</span>
+<span class="fc" id="L49">    }</span>
+
+    public String getFirstName() {
+<span class="fc" id="L52">        return firstName;</span>
+    }
+
+    public Employee firstName(String firstName) {
+<span class="fc" id="L56">        this.firstName = firstName;</span>
+<span class="fc" id="L57">        return this;</span>
+    }
+
+    public void setFirstName(String firstName) {
+<span class="fc" id="L61">        this.firstName = firstName;</span>
+<span class="fc" id="L62">    }</span>
+
+    public String getLastName() {
+<span class="fc" id="L65">        return lastName;</span>
+    }
+
+    public Employee lastName(String lastName) {
+<span class="fc" id="L69">        this.lastName = lastName;</span>
+<span class="fc" id="L70">        return this;</span>
+    }
+
+    public void setLastName(String lastName) {
+<span class="fc" id="L74">        this.lastName = lastName;</span>
+<span class="fc" id="L75">    }</span>
+
+    public String getEmail() {
+<span class="fc" id="L78">        return email;</span>
+    }
+
+    public Employee email(String email) {
+<span class="fc" id="L82">        this.email = email;</span>
+<span class="fc" id="L83">        return this;</span>
+    }
+
+    public void setEmail(String email) {
+<span class="fc" id="L87">        this.email = email;</span>
+<span class="fc" id="L88">    }</span>
+
+    @Override
+    public boolean equals(Object o) {
+<span class="fc bfc" id="L92" title="All 2 branches covered.">        if (this == o) {</span>
+<span class="fc" id="L93">            return true;</span>
+        }
+<span class="fc bfc" id="L95" title="All 4 branches covered.">        if (o == null || getClass() != o.getClass()) {</span>
+<span class="fc" id="L96">            return false;</span>
+        }
+<span class="fc" id="L98">        Employee employee = (Employee) o;</span>
+<span class="fc bfc" id="L99" title="All 4 branches covered.">        if (employee.getId() == null || getId() == null) {</span>
+<span class="fc" id="L100">            return false;</span>
+        }
+<span class="fc" id="L102">        return Objects.equals(getId(), employee.getId());</span>
+    }
+
+    @Override
+    public int hashCode() {
+<span class="fc" id="L107">        return Objects.hashCode(getId());</span>
+    }
+
+    @Override
+    public String toString() {
+<span class="fc" id="L112">        return &quot;Employee{&quot; +</span>
+<span class="fc" id="L113">            &quot;id=&quot; + getId() +</span>
+<span class="fc" id="L114">            &quot;, firstName='&quot; + getFirstName() + &quot;'&quot; +</span>
+<span class="fc" id="L115">            &quot;, lastName='&quot; + getLastName() + &quot;'&quot; +</span>
+<span class="fc" id="L116">            &quot;, email='&quot; + getEmail() + &quot;'&quot; +</span>
+            &quot;}&quot;;
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>
